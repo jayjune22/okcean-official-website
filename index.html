@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OKcean — Natural Skincare from the Ocean</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/board.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#" class="header__logo">
+        <img src="images/logo_01.png" alt="OKcean" class="header__logo-default">
+        <img src="images/logo_02.png" alt="OKcean" class="header__logo-scrolled">
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <ul class="header__nav-list">
+          <li><a href="#about">Brand Story</a></li>
+          <li><a href="#products">Product</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="header__action-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </button>
+        <a href="https://smartstore.naver.com/nym_korea" target="_blank" rel="noopener noreferrer" class="header__action-btn">Shop</a>
+        <a href="#" class="header__action-btn header__action-btn--contact">Contact us</a>
+      </div>
+      <button class="header__hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul class="mobile-nav__list">
+      <li><a href="#about">Brand Story</a></li>
+      <li><a href="#products">Product</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <video class="hero__video" autoplay muted loop playsinline poster="images/KakaoTalk_Photo_2026-02-19-22-34-33.png">
+        <source src="okcean_reel.mp4" type="video/mp4">
+      </video>
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__content">
+      <p class="hero__subtitle">Introducing our new marine collagen collection</p>
+      <h1 class="hero__title">Natural skincare<br>from the ocean</h1>
+      <a href="#" class="hero__cta">Explore the collection</a>
+    </div>
+    <div class="hero__tag">
+      <span class="hero__tag-dot"></span>
+      Marine Collagen — Powered by nature
+    </div>
+  </section>
+
+  <!-- Tagline Section -->
+  <section class="tagline" id="ingredients">
+    <div class="tagline__inner fade-in">
+      <div class="tagline__image"></div>
+      <div class="tagline__card">
+        <h3 class="tagline__heading">Occasion, 매일의 피부 케어를 특별한 순간으로</h3>
+        <p class="tagline__text">
+          Occasion은 영어로 '특별한 순간'이나 '기회'를 뜻하는 단어예요. 그 어원은 라틴어 'occāsiō'에서 왔어요.
+          'ob' (향해) + 'cadere' (떨어지다)를 합친 말로, '적절한 때에 떨어지는 기회'라는 의미죠. 우리는 이 단어를 OKcean의 네이밍에 넣어,
+          피부 케어를 단순한 루틴이 아닌 매일의 특별한 순간으로 만들고 싶었어요.
+        </p>
+        <h3 class="tagline__heading tagline__heading--second">Ocean, 바다의 순수함으로 일상을 활력 넘치게</h3>
+        <p class="tagline__text">
+          우리는 대양(Ocean)의 맑고 순수한 청량함에서 영감을 받아 오케이션(OKcean)을 런칭했습니다.
+          끝없이 펼쳐진 바다의 투명한 푸른빛과 부드러운 파도 소리, 그리고 그 안에 담긴 자연의 에너지는 피부에 필요한 치유력을 상징합니다.
+          자연과 가까운 성분들로 공해와 스트레스에 지친 피부에 순수한 영양을 공급하며 피부의 깊은 곳까지 스며들어
+          자극받은 피부를 진정시키고 회복시킵니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Cards Section -->
+  <section class="products" id="products">
+    <div class="products__inner">
+      <div class="products__label fade-in">
+        <span class="products__label-dot"></span>
+        Product lines
+      </div>
+      <div class="products__grid">
+        <a href="#" class="product-card fade-in">
+          <div class="product-card__image product-card__image--cleansers">
+            <div class="product-card__overlay">
+              <span>View details</span>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title">All Set Gel Cream</h3>
+            <span class="product-card__arrow">→</span>
+          </div>
+        </a>
+        <a href="#" class="product-card fade-in">
+          <div class="product-card__image product-card__image--serums">
+            <div class="product-card__overlay">
+              <span>View details</span>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title">All Set Cream Toner</h3>
+            <span class="product-card__arrow">→</span>
+          </div>
+        </a>
+        <a href="#" class="product-card fade-in">
+          <div class="product-card__image product-card__image--moisturizers">
+            <div class="product-card__overlay">
+              <span>View details</span>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title">All Set Tone Up Cream</h3>
+            <span class="product-card__arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Ingredients & Benefits Section -->
+  <section class="collections" id="about">
+    <div class="collections__inner">
+      <div class="collections__header fade-in">
+        <div class="collections__title-group">
+          <h2 class="collections__title">Key Ingredients & Benefits</h2>
+          <span class="collections__count">(06)</span>
+        </div>
+      </div>
+      <div class="collections__list">
+        <div class="collections__item fade-in" data-modal="modal-pdrn">
+          <span class="collections__item-number">01</span>
+          <span class="collections__item-name">PDRN</span>
+          <span class="collections__item-count">Ingredient</span>
+          <span class="collections__item-arrow">→</span>
+        </div>
+        <div class="collections__item fade-in" data-modal="modal-relederm">
+          <span class="collections__item-number">02</span>
+          <span class="collections__item-name">Relederm Clear</span>
+          <span class="collections__item-count">Technology</span>
+          <span class="collections__item-arrow">→</span>
+        </div>
+        <div class="collections__item fade-in" data-modal="modal-tannin">
+          <span class="collections__item-number">03</span>
+          <span class="collections__item-name">Tannin Pore Complex</span>
+          <span class="collections__item-count">Technology</span>
+          <span class="collections__item-arrow">→</span>
+        </div>
+        <div class="collections__item fade-in" data-modal="modal-allergen">
+          <span class="collections__item-number">04</span>
+          <span class="collections__item-name">EU Allergen Free</span>
+          <span class="collections__item-count">Feature</span>
+          <span class="collections__item-arrow">→</span>
+        </div>
+        <div class="collections__item fade-in" data-modal="modal-watery">
+          <span class="collections__item-number">05</span>
+          <span class="collections__item-name">Watery Formula</span>
+          <span class="collections__item-count">Feature</span>
+          <span class="collections__item-arrow">→</span>
+        </div>
+        <div class="collections__item fade-in" data-modal="modal-cap">
+          <span class="collections__item-number">06</span>
+          <span class="collections__item-name">Cap & Applicator</span>
+          <span class="collections__item-count">Feature</span>
+          <span class="collections__item-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ingredient & Benefit Modals -->
+  <div class="modal-overlay" id="modal-pdrn">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 class="modal-title">PDRN</h3>
+      <p class="modal-body">Polydeoxyribonucleotide (PDRN) is a bioactive compound derived from salmon DNA. It promotes skin cell regeneration, accelerates tissue repair, and provides deep hydration at the cellular level. Known for its anti-inflammatory properties, PDRN helps restore damaged skin and improve overall skin texture.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-relederm">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 class="modal-title">Relederm Clear</h3>
+      <p class="modal-body">Relederm Clear is a proprietary skin-clearing technology that targets blemishes and uneven skin tone. It works by regulating sebum production and supporting the skin's natural barrier function, leaving the complexion clearer and more balanced without irritation.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-tannin">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 class="modal-title">Tannin Pore Complex</h3>
+      <p class="modal-body">The Tannin Pore Complex harnesses plant-derived tannins to visibly minimize pore appearance. This advanced complex tightens and refines skin texture while controlling excess oil, resulting in a smoother, more refined complexion throughout the day.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-allergen">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 class="modal-title">EU Allergen Free</h3>
+      <p class="modal-body">All OKcean products are formulated without the 26 EU-regulated allergens, making them suitable for even the most sensitive skin types. Our commitment to allergen-free formulation ensures a gentle, worry-free skincare experience.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-watery">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 class="modal-title">Watery Formula</h3>
+      <p class="modal-body">Our signature watery formula delivers lightweight, instant hydration that absorbs quickly into the skin. Unlike heavy creams, this water-based texture feels refreshing on application and layers seamlessly under makeup or sunscreen.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-cap">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h3 class="modal-title">Cap & Applicator</h3>
+      <p class="modal-body">Each OKcean product features a specially designed cap and applicator system for precise, hygienic dispensing. The ergonomic design ensures the right amount of product is delivered every time, minimizing waste and maintaining formula freshness.</p>
+    </div>
+  </div>
+
+  <!-- Sustainability Section -->
+  <section class="sustainability" id="sustainability">
+    <div class="sustainability__inner">
+      <div class="sustainability__content fade-in">
+        <div class="sustainability__label">
+          <span class="sustainability__label-dot"></span>
+          Our commitment
+        </div>
+        <h2 class="sustainability__title">Sustainably sourced,<br>ocean-friendly beauty</h2>
+        <p class="sustainability__text">
+          Every OKcean product is crafted with sustainably harvested marine ingredients.
+          We're committed to protecting our oceans — from reef-safe formulas to 100%
+          recyclable packaging. Because beautiful skin shouldn't cost the earth.
+        </p>
+        <a href="#" class="sustainability__cta">Learn about our impact</a>
+      </div>
+      <div class="sustainability__visual fade-in">
+        <div class="sustainability__image"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Board Section -->
+  <section class="board" id="news">
+    <div class="board__inner">
+
+      <!-- List View -->
+      <div id="listView" class="board__view board__view--active">
+        <div class="board__header">
+          <div class="board__title-group">
+            <h2 class="board__title">News</h2>
+            <span class="board__count" id="postCount">(00)</span>
+          </div>
+          <div class="board__auth">
+            <button class="board__write-btn board__admin-only" id="writeBtn">Write</button>
+            <button class="board__auth-btn" id="adminLoginBtn">Admin</button>
+            <button class="board__auth-btn board__admin-only" id="adminLogoutBtn" style="display:none">Logout</button>
+          </div>
+        </div>
+        <div class="board__list">
+          <div class="board__list-header">
+            <span>No.</span>
+            <span>Title</span>
+            <span style="text-align:right">Date</span>
+          </div>
+          <div id="listBody">
+            <div class="board__loading">Loading...</div>
+          </div>
+        </div>
+        <div class="board__pagination" id="pagination"></div>
+      </div>
+
+      <!-- Form View -->
+      <div id="formView" class="board__view">
+        <div class="board__header">
+          <div class="board__title-group">
+            <h2 class="board__title" id="formTitle">New Post</h2>
+          </div>
+        </div>
+        <div class="board__form">
+          <div class="board__form-group">
+            <label class="board__form-label" for="inputTitle">Title</label>
+            <input class="board__form-input" type="text" id="inputTitle" placeholder="Enter title" maxlength="200">
+          </div>
+          <div class="board__form-group">
+            <label class="board__form-label" for="inputContent">Content</label>
+            <textarea class="board__form-textarea" id="inputContent" placeholder="Enter content"></textarea>
+          </div>
+          <div class="board__form-actions">
+            <button class="board__btn board__btn--primary" id="saveBtn">Save</button>
+            <button class="board__btn board__btn--secondary" id="cancelBtn">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detail View -->
+      <div id="detailView" class="board__view">
+        <div class="board__detail">
+          <div class="board__detail-header">
+            <h2 class="board__detail-title" id="detailTitle"></h2>
+            <span class="board__detail-meta" id="detailDate"></span>
+          </div>
+          <div class="board__detail-content" id="detailContent"></div>
+          <div class="board__detail-actions">
+            <button class="board__btn board__btn--secondary" id="backBtn">Back to list</button>
+            <div class="board__detail-actions-right board__admin-only">
+              <button class="board__btn board__btn--secondary" id="editBtn">Edit</button>
+              <button class="board__btn board__btn--danger" id="deleteBtn">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Admin Login Modal -->
+  <div class="board__login-overlay" id="loginModal">
+    <div class="board__login-box">
+      <h3 class="board__login-title">Admin Login</h3>
+      <div class="board__login-group">
+        <label class="board__login-label" for="loginEmail">Email</label>
+        <input class="board__login-input" type="email" id="loginEmail" placeholder="admin@okcean.com">
+      </div>
+      <div class="board__login-group">
+        <label class="board__login-label" for="loginPassword">Password</label>
+        <input class="board__login-input" type="password" id="loginPassword" placeholder="Password">
+      </div>
+      <div class="board__login-error" id="loginError"></div>
+      <div class="board__login-actions">
+        <button class="board__btn board__btn--primary" id="loginSubmitBtn">Login</button>
+        <button class="board__btn board__btn--secondary" id="loginCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="faq__inner">
+      <div class="faq__header fade-in">
+        <div class="faq__title-group">
+          <h2 class="faq__title">FAQ</h2>
+          <span class="faq__count">(04)</span>
+        </div>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item fade-in">
+          <button class="faq__question" aria-expanded="false">
+            <span>주요 성분인 'PDRN'은 무엇이며 어떤 효과가 있나요?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>PDRN(Polydeoxyribonucleotide)은 연어의 DNA에서 추출한 고분자 재생 성분입니다. 피부 세포의 성장 인자를 활성화하여 <strong>손상된 피부 장벽 복구, 콜라겐 생성 촉진(탄력 강화), 보습 및 항염</strong>에 탁월한 효과를 발휘하는 과학적 기반의 성분입니다.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-in">
+          <button class="faq__question" aria-expanded="false">
+            <span>민감한 피부인데 안심하고 사용해도 될까요?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>네, 안심하셔도 됩니다. 오케이션(OKcean)은 유럽연합(EU) 규정에 따라 알레르기 유발 가능성이 있는 <strong>26가지 향료 성분을 일체 첨가하지 않은 'EU Allergen Free'</strong> 기준을 준수합니다. 또한 특허 성분인 <strong>'Reliderm Clear'</strong>를 통해 외부 자극으로부터 피부를 진정시키고 보호하도록 설계되었습니다.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-in">
+          <button class="faq__question" aria-expanded="false">
+            <span>여러 단계의 스킨케어 대신 '풀포뮬라올셋' 하나만 사용해도 충분한가요?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>네, 충분합니다. 오케이션(OKcean)은 20-30대 여성들의 스킨케어 시간(평균 22~26분)을 효율적으로 단축하기 위해 탄생했습니다. <strong>PDRN, Reliderm Clear, Tannin Pore Complex</strong> 등 핵심 성분을 하나의 제품에 담아, 단 한 번의 단계로 <strong>재생, 진정, 모공 관리</strong>를 모두 해결할 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-in">
+          <button class="faq__question" aria-expanded="false">
+            <span>모공 고민이 많은데, 모공 수렴 효과를 기대할 수 있을까요?</span>
+            <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>오케이션(OKcean) 제품에 함유된 <strong>'Tannin Pore Complex'</strong>는 천연 모공 케어 솔루션입니다. 이 성분은 피지 분비를 조절하고 모공을 타이트하게 조여주는 수렴 효과가 있으며, <strong>4주간 사용 시 눈에 띄게 모공이 타이트해지고 피지가 감소</strong>하는 임상 결과를 확인하였습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo"><img src="images/logo_01.png" alt="OKcean"></a>
+          <p class="footer__tagline">Natural skincare from the ocean</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4 class="footer__col-title">Products</h4>
+            <ul>
+              <li><a href="#">Cleansers</a></li>
+              <li><a href="#">Serums</a></li>
+              <li><a href="#">Moisturizers</a></li>
+              <li><a href="#">SPF Protection</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">Company</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Ingredients</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">Support</h4>
+            <ul>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Shipping & Returns</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 OKcean. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4l11.733 16h4.267l-11.733 -16zm6.768 0l7.232 16m-12-16l7.232 16"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="js/board.js"></script>
+</body>
+</html>
