@@ -44,15 +44,15 @@
 
 /* ── Admin-only elements (hidden by default) ── */
 .board__admin-only {
-  display: none;
+  display: none !important;
 }
 
 .board--authed .board__admin-only {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 .board--authed .board__detail-actions-right.board__admin-only {
-  display: flex;
+  display: flex !important;
 }
 
 /* ── Auth Bar ── */
