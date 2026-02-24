@@ -426,6 +426,7 @@
 /* ── Detail View ── */
 .board__detail {
   max-width: 900px;
+  margin: 0 auto;
 }
 
 .board__detail-header {
