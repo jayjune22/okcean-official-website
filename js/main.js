@@ -92,6 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Open product detail modal on card click
+  document.querySelectorAll('.product-card[data-product]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(card.dataset.product);
+    });
+  });
+
   // Close on X button
   document.querySelectorAll('.modal-close').forEach(btn => {
     btn.addEventListener('click', () => {
