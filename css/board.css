@@ -30,7 +30,7 @@
 
 .board__title {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 400;
   letter-spacing: -0.02em;
 }
