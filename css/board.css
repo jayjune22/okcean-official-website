@@ -5,7 +5,7 @@
 /* ── Board Section ── */
 .board {
   padding: clamp(80px, 10vw, 120px) var(--container-padding);
-  background-color: var(--color-bg);
+  background-color: #F5F5F9;
 }
 
 .board__inner {
@@ -203,8 +203,8 @@
 /* ── Two-column Grid ── */
 .board__boards-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 44%) minmax(0, 44%);
+  justify-content: space-between;
 }
 
 .board__board-col {
