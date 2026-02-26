@@ -21,7 +21,7 @@ db.settings({ experimentalForceLongPolling: true });
 var auth = firebase.auth();
 
 var COLLECTION_NAME = 'posts';
-var POSTS_PER_PAGE = 10;
+var POSTS_PER_PAGE = 5;
 
 // ── DOM Elements ──
 var boardSection = document.getElementById('news') || document.querySelector('.board');
