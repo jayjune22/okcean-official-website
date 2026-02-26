@@ -1221,6 +1221,7 @@ img {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border-radius: 4px;
 }
 
 @media (max-width: 480px) {
