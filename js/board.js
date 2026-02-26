@@ -1,6 +1,7 @@
 /* ===========================
    OKcean — Board Page JavaScript
-   (Firebase Compat SDK — no ES module issues)
+   Notice / Media dual-board with category support
+   (Firebase Compat SDK)
    =========================== */
 
 // ── Firebase init ──
@@ -29,17 +30,27 @@ var listView = document.getElementById('listView');
 var formView = document.getElementById('formView');
 var detailView = document.getElementById('detailView');
 
-var postCountEl = document.getElementById('postCount');
-var listBody = document.getElementById('listBody');
-var paginationEl = document.getElementById('pagination');
+// Notice board elements
+var noticeCountEl = document.getElementById('noticeCount');
+var noticeListBody = document.getElementById('noticeListBody');
+var noticePaginationEl = document.getElementById('noticePagination');
+
+// Media board elements
+var mediaCountEl = document.getElementById('mediaCount');
+var mediaListBody = document.getElementById('mediaListBody');
+var mediaPaginationEl = document.getElementById('mediaPagination');
+
 var writeBtn = document.getElementById('writeBtn');
 
+// Form elements
 var formTitle = document.getElementById('formTitle');
+var inputCategory = document.getElementById('inputCategory');
 var inputTitle = document.getElementById('inputTitle');
 var inputContent = document.getElementById('inputContent');
 var saveBtn = document.getElementById('saveBtn');
 var cancelBtn = document.getElementById('cancelBtn');
 
+// Detail elements
 var detailTitle = document.getElementById('detailTitle');
 var detailDate = document.getElementById('detailDate');
 var detailContent = document.getElementById('detailContent');
@@ -57,11 +68,35 @@ var loginSubmitBtn = document.getElementById('loginSubmitBtn');
 var loginCancelBtn = document.getElementById('loginCancelBtn');
 var loginError = document.getElementById('loginError');
 
+// Mobile tabs
+var tabs = document.querySelectorAll('.board__tab');
+var boardCols = document.querySelectorAll('.board__board-col');
+
 // ── State ──
-var currentPage = 1;
-var totalPages = 1;
+var noticeState = { currentPage: 1, totalPages: 1 };
+var mediaState = { currentPage: 1, totalPages: 1 };
 var editingId = null;
+var editingCategory = null;
 var isAdmin = false;
+var activeMobileTab = 'notice';
+
+// ── Init mobile tab state ──
+function initMobileTabs() {
+  boardCols.forEach(function (col) {
+    if (col.dataset.board === activeMobileTab) {
+      col.classList.add('board__board-col--active');
+    } else {
+      col.classList.remove('board__board-col--active');
+    }
+  });
+  tabs.forEach(function (tab) {
+    if (tab.dataset.board === activeMobileTab) {
+      tab.classList.add('board__tab--active');
+    } else {
+      tab.classList.remove('board__tab--active');
+    }
+  });
+}
 
 // ── Auth State ──
 auth.onAuthStateChanged(function (user) {
@@ -120,7 +155,6 @@ async function handleLogin() {
 async function handleLogout() {
   try {
     await auth.signOut();
-    // If on form/detail view, go back to list
     if (formView && formView.classList.contains('board__view--active')) {
       showView(listView);
     }
@@ -169,10 +203,15 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-// ── Load Posts ──
-async function loadPosts(page) {
+// ── Load Posts for a specific category ──
+async function loadBoardPosts(category, page) {
   page = page || 1;
-  currentPage = page;
+  var state = category === 'notice' ? noticeState : mediaState;
+  var listBody = category === 'notice' ? noticeListBody : mediaListBody;
+  var countEl = category === 'notice' ? noticeCountEl : mediaCountEl;
+  var paginationEl = category === 'notice' ? noticePaginationEl : mediaPaginationEl;
+
+  state.currentPage = page;
   listBody.innerHTML = '<div class="board__loading">Loading...</div>';
 
   try {
@@ -181,10 +220,16 @@ async function loadPosts(page) {
       10000
     );
 
-    var allDocs = snapshot.docs;
+    // Filter by category (posts without category default to 'notice')
+    var allDocs = snapshot.docs.filter(function (doc) {
+      var data = doc.data();
+      var cat = data.category || 'notice';
+      return cat === category;
+    });
+
     var totalCount = allDocs.length;
-    totalPages = Math.max(1, Math.ceil(totalCount / POSTS_PER_PAGE));
-    postCountEl.textContent = '(' + String(totalCount).padStart(2, '0') + ')';
+    state.totalPages = Math.max(1, Math.ceil(totalCount / POSTS_PER_PAGE));
+    countEl.textContent = '(' + String(totalCount).padStart(2, '0') + ')';
 
     if (totalCount === 0) {
       listBody.innerHTML = '<div class="board__empty">No posts yet.</div>';
@@ -210,31 +255,34 @@ async function loadPosts(page) {
       listBody.appendChild(item);
     });
 
-    renderPagination();
+    renderBoardPagination(category);
   } catch (err) {
-    console.error('Error loading posts:', err);
+    console.error('Error loading ' + category + ' posts:', err);
     listBody.innerHTML = '<div class="board__empty">Failed to load posts.<br><small>' + escapeHtml(err.message) + '</small></div>';
   }
 }
 
-// ── Render Pagination ──
-function renderPagination() {
+// ── Render Pagination for a specific board ──
+function renderBoardPagination(category) {
+  var state = category === 'notice' ? noticeState : mediaState;
+  var paginationEl = category === 'notice' ? noticePaginationEl : mediaPaginationEl;
+
   paginationEl.innerHTML = '';
-  if (totalPages <= 1) return;
+  if (state.totalPages <= 1) return;
 
   var prevBtn = document.createElement('button');
   prevBtn.className = 'board__page-btn';
   prevBtn.textContent = '<';
-  prevBtn.disabled = currentPage === 1;
-  prevBtn.addEventListener('click', function () { loadPosts(currentPage - 1); });
+  prevBtn.disabled = state.currentPage === 1;
+  prevBtn.addEventListener('click', function () { loadBoardPosts(category, state.currentPage - 1); });
   paginationEl.appendChild(prevBtn);
 
-  for (var p = 1; p <= totalPages; p++) {
+  for (var p = 1; p <= state.totalPages; p++) {
     (function (page) {
       var btn = document.createElement('button');
-      btn.className = 'board__page-btn' + (page === currentPage ? ' board__page-btn--active' : '');
+      btn.className = 'board__page-btn' + (page === state.currentPage ? ' board__page-btn--active' : '');
       btn.textContent = page;
-      btn.addEventListener('click', function () { loadPosts(page); });
+      btn.addEventListener('click', function () { loadBoardPosts(category, page); });
       paginationEl.appendChild(btn);
     })(p);
   }
@@ -242,8 +290,8 @@ function renderPagination() {
   var nextBtn = document.createElement('button');
   nextBtn.className = 'board__page-btn';
   nextBtn.textContent = '>';
-  nextBtn.disabled = currentPage === totalPages;
-  nextBtn.addEventListener('click', function () { loadPosts(currentPage + 1); });
+  nextBtn.disabled = state.currentPage === state.totalPages;
+  nextBtn.addEventListener('click', function () { loadBoardPosts(category, state.currentPage + 1); });
   paginationEl.appendChild(nextBtn);
 }
 
@@ -272,7 +320,7 @@ async function showDetail(id) {
     detailContent.textContent = data.content;
 
     editBtn.onclick = function () { showEditForm(id, data); };
-    deleteBtn.onclick = function () { handleDelete(id); };
+    deleteBtn.onclick = function () { handleDelete(id, data.category || 'notice'); };
   } catch (err) {
     console.error('Error loading post:', err);
     alert('Failed to load post: ' + err.message);
@@ -284,7 +332,10 @@ async function showDetail(id) {
 function showWriteForm() {
   if (!isAdmin) return;
   editingId = null;
+  editingCategory = null;
   formTitle.textContent = 'New Post';
+  inputCategory.value = 'notice';
+  inputCategory.disabled = false;
   inputTitle.value = '';
   inputContent.value = '';
   showView(formView);
@@ -295,7 +346,10 @@ function showWriteForm() {
 function showEditForm(id, data) {
   if (!isAdmin) return;
   editingId = id;
+  editingCategory = data.category || 'notice';
   formTitle.textContent = 'Edit Post';
+  inputCategory.value = editingCategory;
+  inputCategory.disabled = true;
   inputTitle.value = data.title;
   inputContent.value = data.content;
   showView(formView);
@@ -305,6 +359,7 @@ function showEditForm(id, data) {
 // ── Save Post ──
 async function handleSave() {
   if (!isAdmin) return;
+  var category = inputCategory.value;
   var title = inputTitle.value.trim();
   var content = inputContent.value.trim();
 
@@ -334,11 +389,12 @@ async function handleSave() {
         db.collection(COLLECTION_NAME).add({
           title: title,
           content: content,
+          category: category,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         }),
         10000
       );
-      await loadPosts(1);
+      await loadBoardPosts(category, 1);
       showView(listView);
     }
   } catch (err) {
@@ -351,7 +407,7 @@ async function handleSave() {
 }
 
 // ── Delete Post ──
-async function handleDelete(id) {
+async function handleDelete(id, category) {
   if (!isAdmin) return;
   if (!confirm('Are you sure you want to delete this post?')) return;
 
@@ -360,12 +416,31 @@ async function handleDelete(id) {
       db.collection(COLLECTION_NAME).doc(id).delete(),
       10000
     );
-    await loadPosts(currentPage);
+    await loadBoardPosts(category, 1);
     showView(listView);
   } catch (err) {
     console.error('Error deleting post:', err);
     alert('Failed to delete: ' + err.message);
   }
+}
+
+// ── Mobile Tab Switching ──
+function switchMobileTab(tabName) {
+  activeMobileTab = tabName;
+  boardCols.forEach(function (col) {
+    if (col.dataset.board === tabName) {
+      col.classList.add('board__board-col--active');
+    } else {
+      col.classList.remove('board__board-col--active');
+    }
+  });
+  tabs.forEach(function (tab) {
+    if (tab.dataset.board === tabName) {
+      tab.classList.add('board__tab--active');
+    } else {
+      tab.classList.remove('board__tab--active');
+    }
+  });
 }
 
 // ── Event Listeners ──
@@ -380,6 +455,13 @@ cancelBtn.addEventListener('click', function () {
 });
 backBtn.addEventListener('click', function () {
   showView(listView);
+});
+
+// Mobile tab listeners
+tabs.forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    switchMobileTab(tab.dataset.board);
+  });
 });
 
 // Auth event listeners
@@ -404,5 +486,7 @@ if (loginPassword) {
 
 // ── Init ──
 if (document.getElementById('listView')) {
-  loadPosts(1);
+  initMobileTabs();
+  loadBoardPosts('notice', 1);
+  loadBoardPosts('media', 1);
 }

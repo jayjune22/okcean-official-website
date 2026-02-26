@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,8 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About us</a></li>
           <li><a href="#products">Product</a></li>
-          <li><a href="#news">News</a></li>
+          <li><a href="#news">Journal</a></li>
+          <li><a href="#sustainability">Company</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </nav>
@@ -51,7 +52,8 @@
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About us</a></li>
       <li><a href="#products">Product</a></li>
-      <li><a href="#news">News</a></li>
+      <li><a href="#news">Journal</a></li>
+      <li><a href="#sustainability">Company</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </div>
@@ -100,7 +102,7 @@
 
     <!-- Brand Philosophy — image LEFT, text RIGHT -->
     <div class="about-section__block fade-in">
-      <div class="about-section__img slide-in-left" style="background-image: url('images/deepsea.jpg'); background-position: center 70%"></div>
+      <div class="about-section__img slide-in-left" style="background-image: url('images/deepsea_bg.jpg'); background-position: center 70%"></div>
       <div class="about-section__content">
         <span class="about-section__label">Brand Philosophy</span>
         <h3 class="about-section__title">바다의 순수함으로 일상을 활력 넘치게</h3>
@@ -119,6 +121,8 @@
   <section class="products" id="products">
     <div class="products__inner">
       <h2 class="products__title fade-in">Product Lines</h2>
+      <h3 class="products__subtitle fade-in">간편하고 직관적인 데일리 뷰티 루틴</h3>
+      <p class="products__text fade-in">PDRN, Reliderm Clear, Tanin Pore Complex 등 꼭 필요한 성분들을 하나의 제품에 담아, 피부 재생부터 오염물질 차단, 모공 관리까지 단 한 번에 해결합니다.</p>
       <div class="products__grid">
         <a href="#" class="product-card fade-in" data-product="modal-product-gelcream">
           <div class="product-card__image product-card__image--cleansers">
@@ -160,16 +164,13 @@
   <section class="sustainability" id="sustainability">
     <div class="sustainability__overlay"></div>
     <div class="sustainability__inner fade-in">
-      <div class="sustainability__label">
-        Our commitment
-      </div>
       <h2 class="sustainability__title">Lafraise International</h2>
       <p class="sustainability__text">
         라프레즈인터내셔널은 2017년 서울에서 설립된 화장품 전문 기업으로, 유통·공식 수입·자사 브랜드 운영을 세 축으로 글로벌 뷰티 시장에서 활동하고 있습니다.
         국내면세점, 백화점, H&B 스토어, 온라인 채널 등 다양한 유통망을 통해 소비자와 브랜드를 연결하며,
         스위스 호메타(HORMETA), 프랑스 알골로지(Algologie)·님(NYM) 등 프리미엄 글로벌 브랜드를 국내에 공식 공급하고 있습니다.
       </p>
-      <a href="#" class="sustainability__cta">Learn about our impact</a>
+      <a href="#" class="sustainability__cta"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.12em;margin-right:0.4em"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>회사소개서 다운로드</a>
     </div>
   </section>
 
@@ -217,8 +218,7 @@
       <div id="listView" class="board__view board__view--active">
         <div class="board__header">
           <div class="board__title-group">
-            <h2 class="board__title">News</h2>
-            <span class="board__count" id="postCount">(00)</span>
+            <h2 class="board__title">Journal</h2>
           </div>
           <div class="board__auth">
             <button class="board__write-btn board__admin-only" id="writeBtn">Write</button>
@@ -226,17 +226,53 @@
             <button class="board__auth-btn board__admin-only" id="adminLogoutBtn" style="display:none">Logout</button>
           </div>
         </div>
-        <div class="board__list">
-          <div class="board__list-header">
-            <span>No.</span>
-            <span>Title</span>
-            <span style="text-align:right">Date</span>
+
+        <!-- Mobile Tabs -->
+        <div class="board__tabs">
+          <button class="board__tab board__tab--active" data-board="notice">공지사항</button>
+          <button class="board__tab" data-board="media">보도자료</button>
+        </div>
+
+        <!-- Two-column Grid -->
+        <div class="board__boards-grid">
+          <!-- Notice Column -->
+          <div class="board__board-col" data-board="notice">
+            <div class="board__col-header">
+              <h3 class="board__col-title">공지사항</h3>
+              <span class="board__count" id="noticeCount">(00)</span>
+            </div>
+            <div class="board__list">
+              <div class="board__list-header">
+                <span>No.</span>
+                <span>Title</span>
+                <span style="text-align:right">Date</span>
+              </div>
+              <div id="noticeListBody">
+                <div class="board__loading">Loading...</div>
+              </div>
+            </div>
+            <div class="board__pagination" id="noticePagination"></div>
           </div>
-          <div id="listBody">
-            <div class="board__loading">Loading...</div>
+
+          <!-- Media Column -->
+          <div class="board__board-col" data-board="media">
+            <div class="board__col-header">
+              <h3 class="board__col-title">보도자료</h3>
+              <span class="board__count" id="mediaCount">(00)</span>
+            </div>
+            <div class="board__list">
+              <div class="board__list-header">
+                <span>No.</span>
+                <span>Title</span>
+                <span style="text-align:right">Date</span>
+              </div>
+              <div id="mediaListBody">
+                <div class="board__loading">Loading...</div>
+              </div>
+            </div>
+            <div class="board__pagination" id="mediaPagination"></div>
           </div>
         </div>
-        <div class="board__pagination" id="pagination"></div>
       </div>
 
       <!-- Form View -->
@@ -247,6 +283,13 @@
           </div>
         </div>
         <div class="board__form">
+          <div class="board__form-group">
+            <label class="board__form-label" for="inputCategory">Category</label>
+            <select class="board__form-select" id="inputCategory">
+              <option value="notice">공지사항</option>
+              <option value="media">보도자료</option>
+            </select>
+          </div>
           <div class="board__form-group">
             <label class="board__form-label" for="inputTitle">Title</label>
             <input class="board__form-input" type="text" id="inputTitle" placeholder="Enter title" maxlength="200">
@@ -360,7 +403,7 @@
         <div class="footer__company">
           <a href="#" class="footer__logo"><img src="images/logo_01.png" alt="OKcean"></a>
           <div class="footer__info">
-            <p>COMPANY : ㈜라프레즈인터내셔널 &nbsp; CEO : 김신영 &nbsp; PHONE : 02.795.9161 &nbsp; BUSINESS LICENCE : [211-87-19565]</p>
+            <p>COMPANY : ㈜라프레즈인터내셔널 &nbsp; CEO : 정국진 &nbsp; PHONE : 02.795.9161 &nbsp; BUSINESS LICENCE : [211-87-19565]</p>
             <p>E-COMMERCE PERMIT 제 2015-서울성동-0620 호 <strong>[사업자정보확인]</strong></p>
             <p>ADDRESS : 서울시 동작구 흑석한강로27 A동 B206호</p>
           </div>
@@ -376,20 +419,15 @@
             <p>예금주 : 정국진</p>
           </div>
         </div>
-        <div class="footer__nav">
-          <ul class="footer__nav-list">
-            <li><a href="#">회사소개</a></li>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-            <li><a href="#">이용안내</a></li>
-          </ul>
-        </div>
       </div>
       <div class="footer__bottom">
         <p class="footer__copyright">Copyright(C) 2025 (주)라프레즈인터내셔널 ALL RIGHTS RESERVED</p>
       </div>
     </div>
   </footer>
+
+  <!-- Top Button -->
+  <button class="top-btn" id="topBtn" aria-label="Scroll to top"><img src="images/logo_02.png" alt="Top" class="top-btn__logo"></button>
 
   <script src="js/main.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>

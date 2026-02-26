@@ -18,6 +18,11 @@
   --container-padding: clamp(20px, 5vw, 80px);
 }
 
+/* ── Korean text letter-spacing ── */
+:lang(ko) {
+  letter-spacing: -0.025em;
+}
+
 /* ===========================
    Reset & Base
    =========================== */
@@ -375,7 +380,7 @@ img {
    About Section
    =========================== */
 .about-section {
-  padding: clamp(60px, 8vw, 100px) 0 clamp(20px, 3vw, 40px);
+  padding: clamp(80px, 10vw, 120px) 0;
   background-color: var(--color-bg);
 }
 
@@ -557,7 +562,7 @@ img {
    Products
    =========================== */
 .products {
-  padding: clamp(60px, 8vw, 100px) var(--container-padding);
+  padding: clamp(80px, 10vw, 120px) var(--container-padding);
   background-color: var(--color-bg);
 }
 
@@ -571,8 +576,27 @@ img {
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 400;
   letter-spacing: -0.02em;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   color: var(--color-text);
+}
+
+.products__text {
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.9;
+  color: var(--color-gray);
+  margin-bottom: 3rem;
+}
+
+.products__subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2rem;
 }
 
 .products__grid {
@@ -675,7 +699,7 @@ img {
    Collections
    =========================== */
 .collections {
-  padding: clamp(80px, 10vw, 140px) var(--container-padding);
+  padding: clamp(80px, 10vw, 120px) var(--container-padding);
   background-color: var(--color-white);
 }
 
@@ -801,7 +825,7 @@ img {
    =========================== */
 .sustainability {
   position: relative;
-  padding: clamp(100px, 14vw, 200px) var(--container-padding);
+  padding: clamp(100px, 12vw, 160px) var(--container-padding);
   background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1600&q=80');
   background-size: cover;
   background-position: center;
@@ -882,7 +906,7 @@ img {
    FAQ
    =========================== */
 .faq {
-  padding: clamp(80px, 10vw, 140px) var(--container-padding);
+  padding: clamp(80px, 10vw, 120px) var(--container-padding);
   background-color: var(--color-white);
 }
 
@@ -1174,12 +1198,15 @@ img {
 .modal-box--product {
   max-width: none;
   width: 100%;
+  max-height: none;
   padding: 0;
   border-radius: 0;
   overflow-y: auto;
-  max-height: calc(90vh - 120px);
+  flex: 1;
+  min-height: 0;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  transform: none;
 }
 
 .modal-box--product::-webkit-scrollbar {
@@ -1189,8 +1216,22 @@ img {
 .product-modal__wrapper {
   position: relative;
   max-width: 440px;
-  width: calc(100% - 40px);
+  width: calc(100% - 32px);
   max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .product-modal__wrapper {
+    width: calc(100% - 16px);
+    max-height: 85vh;
+  }
+
+  .modal-box.modal-box--product {
+    width: 100%;
+  }
 }
 
 .product-modal__close {
@@ -1220,6 +1261,13 @@ img {
   border-radius: 0;
   box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
   text-align: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .product-modal__bottom-sheet {
+    padding: 16px 0;
+  }
 }
 
 .product-modal__buy-btn {
@@ -1369,5 +1417,55 @@ img {
 
   .collections__title {
     font-size: 2rem;
+  }
+}
+
+/* ===========================
+   Top Button
+   =========================== */
+.top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--color-light-gray);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 900;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.top-btn__logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.top-btn--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.top-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .top-btn {
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 68px;
+    height: 68px;
+    padding: 14px;
   }
 }

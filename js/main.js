@@ -143,4 +143,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Top Button ──
+  var topBtn = document.getElementById('topBtn');
+  if (topBtn) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 400) {
+        topBtn.classList.add('top-btn--visible');
+      } else {
+        topBtn.classList.remove('top-btn--visible');
+      }
+    });
+    topBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
 });
