@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── Scroll fade-in with Intersection Observer ──
-  const fadeElements = document.querySelectorAll('.fade-in');
+  const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
 
   const observerOptions = {
     root: null,
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  fadeElements.forEach(el => fadeObserver.observe(el));
+  animatedElements.forEach(el => fadeObserver.observe(el));
 
   // ── Smooth scroll for anchor links ──
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
