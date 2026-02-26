@@ -1266,14 +1266,7 @@ img {
 
 @media (max-width: 768px) {
   .product-modal__bottom-sheet {
-    padding: 12px 0;
-  }
-
-  .product-modal__buy-btn {
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-    box-shadow: none;
+    padding: 20px;
   }
 }
 
