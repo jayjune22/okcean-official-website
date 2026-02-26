@@ -495,11 +495,23 @@ img {
   left: max(var(--container-padding), calc((100% - 1400px) / 2 + var(--container-padding)));
   z-index: 1;
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-size: clamp(4rem, 8vw, 8rem);
   font-weight: 300;
   color: var(--color-text);
   letter-spacing: -0.02em;
   line-height: 1;
+}
+
+.about-section__img.about-section__img--full {
+  overflow: hidden;
+}
+
+.about-section__overlay-text--light {
+  position: absolute;
+  bottom: clamp(1.5rem, 3vw, 2.5rem);
+  left: calc(max(var(--container-padding), (100% * 10 / 7 - 1400px) / 2 + var(--container-padding)) - 100% * 3 / 7);
+  z-index: 2;
+  color: #fff;
 }
 
 /* Text content — constrained to content area */
@@ -969,8 +981,10 @@ img {
    =========================== */
 .footer {
   background-color: #000286;
-  color: var(--color-white);
-  padding: clamp(60px, 8vw, 100px) var(--container-padding);
+  color: rgba(255, 255, 255, 0.7);
+  padding: clamp(40px, 6vw, 70px) var(--container-padding) clamp(30px, 4vw, 50px);
+  font-size: 0.8rem;
+  line-height: 1.8;
 }
 
 .footer__inner {
@@ -979,90 +993,108 @@ img {
 }
 
 .footer__top {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-  flex-wrap: wrap;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: clamp(2rem, 4vw, 5rem);
+  margin-bottom: 3rem;
 }
 
-.footer__brand {
-  max-width: 300px;
+.footer__company {
+  min-width: 0;
 }
 
 .footer__logo {
   display: block;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
 }
 
 .footer__logo img {
-  height: 32px;
+  height: 28px;
   width: auto;
 }
 
-.footer__tagline {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
+.footer__info p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  line-height: 1.9;
 }
 
-.footer__links {
-  display: flex;
-  gap: clamp(3rem, 5vw, 6rem);
-}
-
-.footer__col-title {
-  font-size: 0.8rem;
+.footer__info strong {
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 1.2rem;
+}
+
+.footer__contact {
+  min-width: 200px;
+}
+
+.footer__contact-label {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer__contact-phone {
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.footer__contact-hours {
+  margin: 0;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.5);
 }
 
-.footer__col li {
-  margin-bottom: 0.7rem;
+.footer__account {
+  margin-top: 1.2rem;
 }
 
-.footer__col a {
-  font-size: 0.9rem;
+.footer__account-label {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__account p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__nav-list li {
+  margin-bottom: 0.6rem;
+}
+
+.footer__nav-list a {
+  font-size: 0.85rem;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
   transition: color 0.3s ease;
 }
 
-.footer__col a:hover {
-  color: var(--color-white);
-  opacity: 1;
+.footer__nav-list a:hover {
+  color: #fff;
 }
 
 .footer__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 3rem;
+  padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .footer__copyright {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.footer__social {
-  display: flex;
-  gap: 1.2rem;
-}
-
-.footer__social a {
-  color: rgba(255, 255, 255, 0.6);
-  transition: color 0.3s ease;
-}
-
-.footer__social a:hover {
-  color: var(--color-white);
-  opacity: 1;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 /* ===========================
@@ -1304,17 +1336,8 @@ img {
   }
 
   .footer__top {
-    flex-direction: column;
-  }
-
-  .footer__links {
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
     gap: 2rem;
-  }
-
-  .footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .modal-box {
