@@ -16,6 +16,7 @@ firebase.initializeApp({
 var db = firebase.firestore();
 db.settings({ experimentalForceLongPolling: true });
 var auth = firebase.auth();
+var storage = firebase.storage();
 
 var COLLECTION = 'popups';
 
@@ -31,6 +32,8 @@ var logoutBtn   = document.getElementById('logoutBtn');
 var newPopupBtn = document.getElementById('newPopupBtn');
 var popupForm   = document.getElementById('popupForm');
 var formHeading = document.getElementById('formHeading');
+var inputImageFile = document.getElementById('inputImageFile');
+var uploadProgress = document.getElementById('uploadProgress');
 var inputImageUrl = document.getElementById('inputImageUrl');
 var imagePreview  = document.getElementById('imagePreview');
 var inputTitle  = document.getElementById('inputTitle');
@@ -39,6 +42,7 @@ var inputBtnText = document.getElementById('inputBtnText');
 var inputBtnLink = document.getElementById('inputBtnLink');
 var inputStartDate = document.getElementById('inputStartDate');
 var inputEndDate   = document.getElementById('inputEndDate');
+var inputType   = document.getElementById('inputType');
 var saveBtn     = document.getElementById('saveBtn');
 var cancelBtn   = document.getElementById('cancelBtn');
 var popupList   = document.getElementById('popupList');
@@ -94,6 +98,51 @@ inputImageUrl.addEventListener('input', function() {
   }
 });
 
+// 파일 선택 시 미리보기
+inputImageFile.addEventListener('change', function() {
+  var file = inputImageFile.files[0];
+  if (file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      imagePreview.src = e.target.result;
+      imagePreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+    inputImageUrl.value = '';
+  }
+});
+
+// 이미지를 Storage에 업로드하고 URL 반환
+async function uploadImage(file) {
+  var timestamp = Date.now();
+  var safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+  var ref = storage.ref('popups/' + timestamp + '_' + safeName);
+
+  uploadProgress.style.display = 'block';
+  uploadProgress.textContent = '업로드 중...';
+
+  var task = ref.put(file);
+
+  return new Promise(function(resolve, reject) {
+    task.on('state_changed',
+      function(snapshot) {
+        var pct = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        uploadProgress.textContent = '업로드 중... ' + pct + '%';
+      },
+      function(err) {
+        uploadProgress.style.display = 'none';
+        reject(err);
+      },
+      function() {
+        task.snapshot.ref.getDownloadURL().then(function(url) {
+          uploadProgress.style.display = 'none';
+          resolve(url);
+        });
+      }
+    );
+  });
+}
+
 // ── Form open/close ──
 newPopupBtn.addEventListener('click', function() {
   editingId = null;
@@ -109,6 +158,9 @@ cancelBtn.addEventListener('click', function() {
 });
 
 function clearForm() {
+  inputType.value = 'banner';
+  inputImageFile.value = '';
+  uploadProgress.style.display = 'none';
   inputImageUrl.value = '';
   imagePreview.style.display = 'none';
   inputTitle.value = '';
@@ -124,8 +176,25 @@ saveBtn.addEventListener('click', async function() {
   var title = inputTitle.value.trim();
   if (!title) { alert('제목을 입력해주세요.'); return; }
 
+  // 파일이 선택되었으면 업로드
+  var imageUrl = inputImageUrl.value.trim();
+  var file = inputImageFile.files[0];
+  if (file) {
+    saveBtn.disabled = true;
+    saveBtn.textContent = '이미지 업로드 중...';
+    try {
+      imageUrl = await uploadImage(file);
+    } catch(err) {
+      alert('이미지 업로드 실패: ' + err.message);
+      saveBtn.disabled = false;
+      saveBtn.textContent = '저장';
+      return;
+    }
+  }
+
   var data = {
-    imageUrl:   inputImageUrl.value.trim(),
+    type:       inputType.value,
+    imageUrl:   imageUrl,
     title:      title,
     body:       inputBody.value.trim(),
     buttonText: inputBtnText.value.trim(),
@@ -205,8 +274,9 @@ function renderCard(docSnap) {
 
   var meta = document.createElement('div');
   meta.className = 'popup-card__meta';
+  var typeLabel = (d.type === 'modal') ? '[모달]' : '[띠배너]';
   var period = (d.startDate || '?') + ' ~ ' + (d.endDate || '?');
-  meta.textContent = period;
+  meta.textContent = typeLabel + ' ' + period;
 
   info.appendChild(titleEl);
   info.appendChild(meta);
@@ -270,6 +340,7 @@ function openEditForm(id, data) {
   } else {
     imagePreview.style.display = 'none';
   }
+  inputType.value = data.type || 'banner';
   inputTitle.value = data.title || '';
   inputBody.value = data.body || '';
   inputBtnText.value = data.buttonText || '';

@@ -255,7 +255,18 @@
     <h3 id="formHeading">새 팝업 작성</h3>
 
     <div class="form-row">
-      <label>이미지 URL</label>
+      <label>팝업 유형</label>
+      <select id="inputType" style="width:100%;padding:11px 13px;border:1px solid #ccc;font-size:0.9rem;font-family:inherit;outline:none;background:#fafafa;">
+        <option value="banner">띠배너</option>
+        <option value="modal">모달</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label>이미지 업로드</label>
+      <input type="file" id="inputImageFile" accept="image/*" style="width:100%;padding:8px 0;font-size:0.85rem;font-family:inherit;" />
+      <div id="uploadProgress" style="display:none;margin-top:8px;font-size:0.8rem;color:#666;"></div>
+      <div style="margin:10px 0 6px;font-size:0.78rem;color:#999;">또는 이미지 URL 직접 입력</div>
       <input type="url" id="inputImageUrl" placeholder="https://example.com/image.jpg" />
       <img id="imagePreview" alt="미리보기" />
     </div>
@@ -308,6 +319,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 <script src="js/admin-popup.js"></script>
 </body>
 </html>
