@@ -119,11 +119,9 @@
     if (localStorage.getItem('popupSkipped') === today()) return;
 
     var db = firebase.firestore();
-    db.settings({ experimentalForceLongPolling: true });
 
     db.collection('popups')
       .where('active', '==', true)
-      .orderBy('createdAt', 'desc')
       .get()
       .then(function (snapshot) {
         if (snapshot.empty) return;
