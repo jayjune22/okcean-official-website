@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin-popup.html
+
+Sitemap: https://okcean.com/sitemap.xml
