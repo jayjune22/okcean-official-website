@@ -1371,6 +1371,10 @@ img {
     aspect-ratio: 16 / 9;
   }
 
+  .about-section__img.about-section__img--full {
+    aspect-ratio: 21 / 9;
+  }
+
   .about-section__content {
     padding: 0 var(--container-padding);
   }
