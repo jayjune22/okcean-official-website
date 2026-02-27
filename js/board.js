@@ -17,7 +17,7 @@ firebase.initializeApp({
 
 // Force long-polling — prevents WebSocket hang on localhost / 127.0.0.1
 var db = firebase.firestore();
-db.settings({ experimentalForceLongPolling: true });
+db.settings({ experimentalForceLongPolling: true, merge: true });
 
 var auth = firebase.auth();
 
