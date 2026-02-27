@@ -23,8 +23,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="css/style.css?v=4">
-  <link rel="stylesheet" href="css/board.css?v=4">
-  <link rel="stylesheet" href="css/popup.css?v=1">
+  <link rel="stylesheet" href="css/board.css?v=4" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/popup.css?v=1" media="print" onload="this.media='all'">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,8 +50,8 @@
   <header class="header" id="header">
     <div class="header__inner">
       <a href="#" class="header__logo">
-        <img src="images/logo_01.png" alt="OKcean" class="header__logo-default">
-        <img src="images/logo_02.png" alt="OKcean" class="header__logo-scrolled">
+        <img src="images/logo_01.png" alt="OKcean" class="header__logo-default" width="1163" height="358">
+        <img src="images/logo_02.png" alt="OKcean" class="header__logo-scrolled" width="1163" height="358">
       </a>
       <nav class="header__nav" id="mainNav">
         <ul class="header__nav-list">
@@ -91,10 +91,13 @@
     </ul>
   </div>
 
+  <!-- Main Content -->
+  <main>
+
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <div class="hero__bg">
-      <video class="hero__video" autoplay muted loop playsinline poster="images/KakaoTalk_Photo_2026-02-19-22-34-33.png">
+      <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="images/KakaoTalk_Photo_2026-02-19-22-34-33.png">
         <source src="okcean_reel.mp4" type="video/mp4">
       </video>
       <div class="hero__overlay"></div>
@@ -264,7 +267,7 @@
     <div class="product-modal__wrapper">
       <button class="modal-close product-modal__close" aria-label="Close">&times;</button>
       <div class="modal-box modal-box--product">
-        <img src="images/product_gelcream_full.jpg" alt="All Set Gel Cream" class="product-modal__image">
+        <img src="images/product_gelcream_full.jpg" alt="All Set Gel Cream" class="product-modal__image" loading="lazy" width="1256" height="1676">
       </div>
       <div class="product-modal__bottom-sheet">
         <a href="https://smartstore.naver.com/nym_korea/products/12180719375" target="_blank" rel="noopener noreferrer" class="product-modal__buy-btn">지금 바로 구매하기</a>
@@ -275,7 +278,7 @@
     <div class="product-modal__wrapper">
       <button class="modal-close product-modal__close" aria-label="Close">&times;</button>
       <div class="modal-box modal-box--product">
-        <img src="images/product_creamtoner_full.jpg" alt="All Set Cream Toner" class="product-modal__image">
+        <img src="images/product_creamtoner_full.jpg" alt="All Set Cream Toner" class="product-modal__image" loading="lazy" width="1559" height="2080">
       </div>
       <div class="product-modal__bottom-sheet">
         <a href="https://smartstore.naver.com/nym_korea/products/12180841101" target="_blank" rel="noopener noreferrer" class="product-modal__buy-btn">지금 바로 구매하기</a>
@@ -286,7 +289,7 @@
     <div class="product-modal__wrapper">
       <button class="modal-close product-modal__close" aria-label="Close">&times;</button>
       <div class="modal-box modal-box--product">
-        <img src="images/product_toneupcream_full.jpg" alt="All Set Tone Up Cream" class="product-modal__image">
+        <img src="images/product_toneupcream_full.jpg" alt="All Set Tone Up Cream" class="product-modal__image" loading="lazy" width="1355" height="1807">
       </div>
       <div class="product-modal__bottom-sheet">
         <a href="https://smartstore.naver.com/nym_korea/products/12180863084" target="_blank" rel="noopener noreferrer" class="product-modal__buy-btn">지금 바로 구매하기</a>
@@ -411,6 +414,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Admin Login Modal -->
   <div class="board__login-overlay" id="loginModal">
     <div class="board__login-box">
@@ -437,7 +442,7 @@
     <div class="footer__inner">
       <div class="footer__top">
         <div class="footer__company">
-          <a href="#" class="footer__logo"><img src="images/logo_01.png" alt="OKcean"></a>
+          <a href="#" class="footer__logo"><img src="images/logo_01.png" alt="OKcean" width="1163" height="358" loading="lazy"></a>
           <div class="footer__info">
             <p>COMPANY : ㈜라프레즈인터내셔널 &nbsp; CEO : 정국진 &nbsp; PHONE : 02.795.9161 &nbsp; BUSINESS LICENCE : [211-87-19565]</p>
             <p>E-COMMERCE PERMIT 제 2015-서울성동-0620 호 <strong>[사업자정보확인]</strong></p>
@@ -463,7 +468,7 @@
   </footer>
 
   <!-- Top Button -->
-  <button class="top-btn" id="topBtn" aria-label="Scroll to top"><img src="images/logo_02.png" alt="Top" class="top-btn__logo"></button>
+  <button class="top-btn" id="topBtn" aria-label="Scroll to top"><img src="images/logo_02.png" alt="Top" class="top-btn__logo" width="1163" height="358" loading="lazy"></button>
 
   <script src="js/main.js?v=4"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>

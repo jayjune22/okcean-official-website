@@ -1084,7 +1084,7 @@ img {
 .footer__contact-hours {
   margin: 0;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .footer__account {
@@ -1132,7 +1132,7 @@ img {
 
 .footer__copyright {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* ===========================
