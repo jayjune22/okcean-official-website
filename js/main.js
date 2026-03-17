@@ -145,6 +145,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Hero Slider ──
+  const slides = document.querySelectorAll('.hero-slider__slide');
+  const dots = document.querySelectorAll('.hero-slider__dot');
+  const progressBar = document.querySelector('.hero-slider__progress-bar');
+  const SLIDE_INTERVAL = 5000;
+  let currentSlide = 0;
+  let slideTimer = null;
+  let progressStart = null;
+  let progressRaf = null;
+
+  function goToSlide(index) {
+    slides.forEach(s => s.classList.remove('hero-slider__slide--active'));
+    dots.forEach(d => d.classList.remove('hero-slider__dot--active'));
+    currentSlide = index;
+    slides[currentSlide].classList.add('hero-slider__slide--active');
+    dots[currentSlide].classList.add('hero-slider__dot--active');
+    startProgress();
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % slides.length);
+  }
+
+  function startProgress() {
+    if (progressRaf) cancelAnimationFrame(progressRaf);
+    clearTimeout(slideTimer);
+    progressStart = performance.now();
+
+    function tick(now) {
+      const elapsed = now - progressStart;
+      const pct = Math.min((elapsed / SLIDE_INTERVAL) * 100, 100);
+      if (progressBar) progressBar.style.width = pct + '%';
+      if (elapsed < SLIDE_INTERVAL) {
+        progressRaf = requestAnimationFrame(tick);
+      } else {
+        nextSlide();
+      }
+    }
+    progressRaf = requestAnimationFrame(tick);
+  }
+
+  if (slides.length > 0) {
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goToSlide(parseInt(dot.dataset.goto, 10));
+      });
+    });
+    startProgress();
+  }
+
   // ── Top Button ──
   var topBtn = document.getElementById('topBtn');
   if (topBtn) {
