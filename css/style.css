@@ -180,9 +180,11 @@ img {
 }
 
 .header__nav-list a {
-  font-size: 0.9rem;
-  font-weight: 400;
+  font-family: 'GmarketSansMedium', var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
   color: var(--color-text);
+  text-transform: uppercase;
   letter-spacing: 0.02em;
   transition: color 0.4s ease, opacity 0.3s ease;
 }
@@ -281,7 +283,7 @@ img {
   min-height: 600px;
   max-height: 900px;
   overflow: hidden;
-  background-color: #f5f0eb;
+  background-color: #fff;
 }
 
 .hero-slider__track {
@@ -312,7 +314,7 @@ img {
   align-items: center;
   justify-content: center;
   padding: clamp(2rem, 5vw, 5rem);
-  background-color: #f5f0eb;
+  background-color: #fff;
 }
 
 .hero-slider__text-inner {
@@ -321,11 +323,12 @@ img {
 }
 
 .hero-slider__label {
-  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  font-family: 'GmarketSansMedium', var(--font-sans);
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-gray);
+  color: var(--color-text);
   margin-bottom: 1.5rem;
 }
 
@@ -422,19 +425,26 @@ img {
   z-index: 10;
 }
 
+.hero-slider__nav-inner {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  gap: 0.8rem;
+}
+
 .hero-slider__dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 1.5px solid var(--color-text);
-  background: transparent;
+  border: none;
+  background-color: var(--color-light-gray);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
 }
 
 .hero-slider__dot--active {
-  background-color: var(--color-text);
+  background-color: #000286;
 }
 
 /* Progress bar */
@@ -505,9 +515,9 @@ img {
   max-width: 1400px;
   margin: 0 auto clamp(2rem, 3vw, 3rem);
   padding: 0 var(--container-padding);
-  font-family: var(--font-serif);
+  font-family: 'GmarketSansMedium', var(--font-serif);
   font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
@@ -658,9 +668,9 @@ img {
 }
 
 .about-section__title {
-  font-family: var(--font-serif);
+  font-family: 'GmarketSansMedium', var(--font-serif);
   font-size: clamp(1.4rem, 2.5vw, 2rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.4;
   color: var(--color-text);
   letter-spacing: -0.01em;
@@ -689,9 +699,9 @@ img {
 }
 
 .products__title {
-  font-family: var(--font-serif);
+  font-family: 'GmarketSansMedium', var(--font-serif);
   font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
   color: var(--color-text);
@@ -707,9 +717,9 @@ img {
 }
 
 .products__subtitle {
-  font-family: var(--font-serif);
+  font-family: 'GmarketSansMedium', var(--font-serif);
   font-size: clamp(1.4rem, 2.5vw, 2rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.4;
   color: var(--color-text);
   letter-spacing: -0.01em;
@@ -813,7 +823,7 @@ img {
 }
 
 .product-card__title {
-  font-family: var(--font-serif);
+  font-family: 'GmarketSansMedium', var(--font-serif);
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -999,9 +1009,9 @@ img {
 }
 
 .sustainability__title {
-  font-family: var(--font-serif);
+  font-family: 'GmarketSansMedium', var(--font-serif);
   font-size: clamp(1.4rem, 2.5vw, 2rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.4;
   margin-bottom: 1.5rem;
   color: #fff;
@@ -1058,9 +1068,9 @@ img {
 }
 
 .faq__title {
-  font-family: var(--font-serif);
+  font-family: 'GmarketSansMedium', var(--font-serif);
   font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 
@@ -1496,7 +1506,7 @@ img {
     bottom: auto;
     position: relative;
     padding: 1.2rem 0;
-    background-color: #f5f0eb;
+    background-color: #fff;
   }
 
   .hero-slider__progress {

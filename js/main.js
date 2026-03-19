@@ -94,13 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open product detail modal on card click
-  document.querySelectorAll('.product-card[data-product]').forEach(card => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal(card.dataset.product);
-    });
-  });
+  // Product cards now link directly to smart store
 
   // Close on X button
   document.querySelectorAll('.modal-close').forEach(btn => {
